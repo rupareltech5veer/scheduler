@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name  ="viewport" content="width=device-width, initial-scale=1">
+        <title>Salesforce Data</title>
+        <link rel="stylesheet" type="text/css"
+            href="./main.css">
+        <script src= "https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script> 
+        <script type="text/javascript" lang="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.3/xlsx.full.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="./main.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+      <!-- Custom Theme JavaScript -->
+      <script src='google-sheet.js'></script>
+    </head>
+    <body>
+        <div>
+        <h1>Data Table: </h1>
+        <div>
+            <table id = "testTable" style="text-align:center;">
+                <tr id="headRow">
+                    <th >Season</th>
+                    <th>Course</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>No Class Date</th>
+                    <th># of Classes</th>
+                    <th>Teacher</th>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Grade</th>
+                    <th></th>
+                </tr>
+            </table>
+        </div>
+        <div>
+            <button class="connect" id="connect">Connect</button>
+        </div>
+        <script>
+            $("#connect").click(function(){
+                    console.log("Yes I am Doing it");
+                    //The clientId and consumerSecret are the ones from the Connected App
+                    var clientId = "3MVG9FxR3Tq3eZN.3Ykts1kDoDlrCwDoydYPeZOpng49i_2T8utK1uwGNoybnDYtYMDvtfihvRR9qz3zyxS87";
+                    var consumerSecret = "60227DB651CE6A2FF7A1B22A5976F51AD29A8DF5443576C2B82596A31EFA530E";
+                    //Authorization endpoint
+                    var authEndPoint = "https://test.salesforce.com/services/oauth2/authorize";
+                    //response_type must be set to token
+                    var responseType = "token";
+                    //This is the callback URL from the connected app
+                    var redirectURI = "https://rupareltech5veer.github.io/scheduler/";
+                    //Construct the URL with the required parameters
+                    var requestURL = authEndPoint+'?client_id='+clientId+'&response_type='+responseType+'&redirect_uri='+redirectURI;
+                    //redirect the user to the endpoint
+                    window.location = requestURL;
+                });
+        </script>
+        </div>
+    </body>
+</html>
