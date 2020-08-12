@@ -215,10 +215,12 @@
     var requestUrl = 'https://cors-anywhere.herokuapp.com/https://starfireed--dev.lightning.force.com/services/data/v20.0/sobjects/hed__Course_Offering__c/a0B2D0000021RyRUAU';
     //create a javascript object with the account field values
     var accountInfo = {
-        "Number_of_Classes__c": "14"
+        "Number_of_Classes__c": 14
     }
     console.log("Here is your datatatat");
-    console.log(accountInfo);	
+    console.log(accountInfo);
+    console.log("Access Token:");
+    console.log(accessToken);
     //convert the object to a JSON string
     var accountInfoJson = JSON.stringify(accountInfo);
         
