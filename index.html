@@ -211,8 +211,40 @@
 
     // Prevent default posting of form
     event.preventDefault();
-
+       
+    var requestUrl = 'https://cors-anywhere.herokuapp.com/https://starfireed--dev.lightning.force.com/services/data/v20.0/sobjects/hed__Course_Offering__c/a0B2D0000021RyRUAU';
+    //create a javascript object with the account field values
+    var accountInfo = {
+        "hed__Start_Date__c" : "2020-08-11",
+        "hed__End_Date__c" : "2020-08-31",
+        "Grade__c" : "6-7",
+        "Number_of_Classes__c": "14"
+    }
+    console.log("Here is your datatatat");
+    console.log(accountInfo);	
+    //convert the object to a JSON string
+    var accountInfoJson = JSON.stringify(accountInfo);
+        
+    $.ajax({
+        type: 'PATCH',
+        url : requestUrl,
+        //add the authorization header including the access_token
+        crossDomain: true,
+        instance_url: 'https://starfireed--dev.lightning.force.com/',
+        headers : {
+        'Authorization' : 'Bearer '+accessToken,
+        'Content-Type' : 'application/json'
+        },
+        data : accountInfoJson,
+        success : function(response){
+            console.log("Success: "+response);
+        },
+        error: function(response){
+            console.log("Error: "+response);
         }
+    });
+
+   }
     </script>
      </div>
         </div>
