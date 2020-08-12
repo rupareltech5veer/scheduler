@@ -1,7 +1,30 @@
 var _JsonData;
 var createXLSLFormatObj = {};
 var databuf={};
+var accessToken;
+function GetURLParameter(sParam)
+    {
+    var mainURL = document.location+'';
+    var pageUrls = mainURL.split('#');
+    console.log("Main URL!: ");
+    console.log(mainURL);
+    var sURLVariables = pageUrls[1].split('#');
+    for (var i = 0; i < sURLVariables.length; i++) 
+        {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+            {
+            return sParameterName[1];
+            }
+        }
+    }
 function readdata(){
+    //Get access token.
+    //Because the access token is a URL parameter it needs to be decoded
+    accessToken = decodeURI(GetURLParameter('access_token'));
+    console.log(accessToken);
+
+    //Use this function to get the access token from the URL
     readspreadsheet();
     
     fetch('https://cors-anywhere.herokuapp.com/https://docs.google.com/spreadsheets/d/e/2PACX-1vS2ZzcLUznz2iZzYulR5Xm65iy-xg_YsFCUnLms3F_Glw7-PM-kBt8Ndas_D3t11-2KBhAWpdRpKz1G/pub?output=xlsx').then(function (res) {
